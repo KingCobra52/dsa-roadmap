@@ -41,3 +41,38 @@ class DynamicArray:
         for index in range(self.length):
             new_array[index] = self.array[index]
         self.array = new_array
+
+    def __setitem__(self, i, value):
+        #set the item at index i to value
+        if not 0 <= i < self.length:
+            raise IndexError("Index not in range")
+
+        self.array[i] = value
+
+    def delete(self, i):
+        #removes value at index i
+        if not 0 <= i < self.length:
+           raise IndexError("Deletion not in range")
+
+        self.array[i] = None
+
+        for index in range(i, self.length - 1):
+            self.array[index] = self.array[index + 1]
+        self.array[self.length - 1] = None
+
+        self.length -= 1
+
+
+    def insert(self, i, value):
+        #makes space for new element in at index i pushing everthing from i onward one slot to the right to make space
+        if not 0 <= i <= self.length:
+            raise IndexError("Index not in range")
+
+        if self.length == self.capacity:
+            self._resize(2 * self.capacity)
+
+        for index in range(self.length - 1, i - 1, -1):
+            self.array[index + 1] = self.array[index]
+
+        self.length += 1
+        self.array[i] = value
