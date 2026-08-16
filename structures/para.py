@@ -1,6 +1,6 @@
-from pythonds.basic import Stack
+from structures.stacker import Stack
 
-def parChecker(symbolString):
+def parChecker(symbolString: str):
     s = Stack()
     balanced = True
     index = 0
@@ -23,3 +23,4 @@ def parChecker(symbolString):
 
 print(parChecker('((()))'))
 print(parChecker('(()'))
+print(parChecker('())'))
