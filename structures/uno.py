@@ -55,14 +55,6 @@ class LinkedList:
                 current = current.next
             current.next = temp
 
-    def insert(self, pos, item):
-        node = Node(item)
-        previous = None
-        current = self.head
-        count = 0
-        while current is not None and count < pos:
-            pass
-
 def main():
     mylist = LinkedList()
     mylist.add(31)
